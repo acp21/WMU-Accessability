@@ -15,7 +15,9 @@ fin = open(fileName, "rt")
 fout = open(out, "wt")
 # Go through file and replace all long comment lines with nothing
 for line in fin:
-    fout.write(line.replace('# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -', ''))
-
+    if "#" in line and "-" in line:
+        fout.write(line.replace("-", ""))
+    else:
+        fout.write(line)
 fin.close()
 fout.close()
